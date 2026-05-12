@@ -1,0 +1,550 @@
+/* ──────────────────────────────────────
+   TARUNADAYAVARNA — Mobile CSS
+   ────────────────────────────────────── */
+
+:root {
+  --navy:   #0D1B4B;
+  --yellow: #F5C518;
+  --white:  #FFFFFF;
+  --gray:   #F4F6FB;
+  --muted:  #8892a4;
+  --text:   #1a1a2e;
+  --green:  #2ECC71;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #e8ecf5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text);
+}
+
+#app-shell {
+  width: 390px;
+  min-width: 390px;
+  max-width: 390px;
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 0 60px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  #app-shell {
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    box-shadow: none;
+  }
+}
+
+/* ── Flash ── */
+.flash {
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.flash-success { background: #D4F5E6; color: #1a7a44; }
+.flash-error   { background: #FDECEA; color: #c0392b; }
+
+/* ── Page Header ── */
+.page-header-navy {
+  background: var(--navy);
+  padding: 50px 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header-navy::before {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(245,197,24,0.12);
+  top: -60px; right: -40px;
+}
+.page-header-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 6px;
+  position: relative;
+}
+.page-header-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 4px;
+  position: relative;
+}
+.back-btn {
+  color: rgba(255,255,255,0.8);
+  font-size: 18px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+/* ── Page Content ── */
+.page-content {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* ── Auth ── */
+.auth-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--navy);
+}
+.auth-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px 30px;
+  text-align: center;
+}
+.logo-circle {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(245,197,24,0.4);
+}
+.logo-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--navy);
+}
+.app-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 700;
+  color: #fff;
+}
+.app-subtitle {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+.auth-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 28px 28px 0 0;
+  padding: 28px 24px 32px;
+}
+.auth-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.auth-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.auth-link {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 20px;
+}
+.auth-link a { color: var(--navy); font-weight: 600; text-decoration: none; }
+
+/* ── Input ── */
+.input-group { margin-bottom: 0; }
+.input-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.input-row {
+  display: flex; align-items: center;
+  background: var(--gray);
+  border-radius: 14px;
+  padding: 0 16px; height: 52px; gap: 12px;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.input-row:focus-within { border-color: var(--yellow); }
+.input-row input, .input-row select {
+  flex: 1; border: none; background: transparent;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; outline: none; color: var(--text);
+}
+.input-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.field-error {
+  display: block;
+  font-size: 11px;
+  color: #e74c3c;
+  margin-top: 4px;
+}
+
+/* ── Button ── */
+.btn-yellow {
+  width: 100%; height: 52px;
+  background: var(--yellow); border: none; border-radius: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--navy); cursor: pointer;
+  box-shadow: 0 6px 20px rgba(245,197,24,0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+}
+.btn-yellow:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(245,197,24,0.3); }
+
+.btn-sm {
+  padding: 6px 14px; border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  border: none; cursor: pointer;
+}
+.btn-sm-yellow { background: var(--yellow); color: var(--navy); }
+.btn-sm-navy   { background: var(--navy); color: #fff; }
+.btn-sm-danger { background: #FDECEA; color: #c0392b; }
+
+.btn-logout-full {
+  width: 100%; padding: 14px;
+  background: #FDECEA; border: none; border-radius: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: #c0392b; cursor: pointer;
+}
+
+/* ── Card ── */
+.card {
+  background: #fff; border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 10px rgba(13,27,75,0.06);
+  margin-bottom: 10px;
+}
+
+/* ── Bottom Nav ── */
+.bottom-nav {
+  background: #fff;
+  border-top: 1px solid rgba(13,27,75,0.06);
+  display: flex; justify-content: space-around; align-items: center;
+  padding: 10px 0 14px;
+  position: sticky; bottom: 0; z-index: 200;
+  flex-shrink: 0;
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 3px; text-decoration: none; flex: 1;
+}
+.nav-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; transition: background 0.2s;
+}
+.nav-icon.active { background: var(--navy); }
+.nav-label {
+  font-size: 10px; font-weight: 500;
+  color: var(--muted);
+}
+.nav-label.active { color: var(--navy); font-weight: 700; }
+
+/* ── Badge ── */
+.badge {
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px;
+  white-space: nowrap;
+}
+.badge-menunggu { background: #F0F0F0; color: #888; }
+.badge-proses   { background: #FFF3CC; color: #a07000; }
+.badge-selesai  { background: #D4F5E6; color: #1a7a44; }
+.badge-batal    { background: #FDECEA; color: #c0392b; }
+
+/* ── Jadwal Dot ── */
+.jadwal-item { display: flex; align-items: flex-start; gap: 12px; }
+.jadwal-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 4px;
+}
+.dot-menunggu { background: #ccc; }
+.dot-proses   { background: #F5C518; }
+.dot-selesai  { background: var(--green); }
+.dot-batal    { background: #e74c3c; }
+.jadwal-info { flex: 1; }
+.jadwal-waktu  { font-size: 12px; color: var(--muted); }
+.jadwal-jenis  { font-size: 14px; font-weight: 600; color: var(--text); margin: 2px 0; }
+.jadwal-petugas { font-size: 12px; color: var(--muted); }
+
+/* ── Stat Cards ── */
+.stat-row {
+  display: flex; gap: 8px;
+  margin-bottom: 16px;
+}
+.stat-card {
+  flex: 1; background: var(--gray); border-radius: 14px;
+  padding: 12px; text-align: center;
+}
+.stat-card-yellow { background: var(--yellow); }
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--navy);
+}
+.stat-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+/* ── Beranda Header ── */
+.header-top-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  position: relative;
+}
+.header-greeting {
+  font-size: 12px; color: rgba(255,255,255,0.65);
+}
+.header-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 700; color: #fff;
+  margin: 2px 0;
+}
+.role-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px; padding: 3px 10px;
+  border-radius: 20px;
+}
+.notif-btn {
+  position: relative;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; text-decoration: none;
+}
+.notif-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--yellow); color: var(--navy);
+  font-size: 9px; font-weight: 700;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Menu Grid ── */
+.menu-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; margin-bottom: 20px;
+}
+.menu-item {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; text-decoration: none;
+  background: var(--gray); border-radius: 14px;
+  padding: 14px 8px;
+}
+.menu-icon { font-size: 22px; }
+.menu-item span { font-size: 11px; font-weight: 600; color: var(--navy); }
+
+/* ── Section Title ── */
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 700; color: var(--navy);
+  margin-bottom: 10px;
+}
+
+/* ── Empty State ── */
+.empty-state {
+  text-align: center; padding: 32px 16px;
+  color: var(--muted);
+}
+.empty-icon { font-size: 40px; margin-bottom: 8px; }
+.empty-state p { font-size: 13px; }
+
+/* ── Edukasi ── */
+.featured-card {
+  display: block; border-radius: 16px; overflow: hidden;
+  text-decoration: none; margin-bottom: 16px;
+  position: relative; height: 160px;
+}
+.featured-img {
+  width: 100%; height: 160px; object-fit: cover;
+}
+.featured-placeholder {
+  background: var(--gray);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.featured-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(13,27,75,0.85));
+  padding: 16px;
+}
+.featured-tag {
+  background: var(--yellow); color: var(--navy);
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 10px;
+  display: inline-block; margin-bottom: 4px;
+}
+.featured-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 700; color: #fff;
+}
+.edukasi-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 16px;
+}
+.edukasi-card {
+  background: #fff; border-radius: 14px;
+  overflow: hidden; text-decoration: none;
+  box-shadow: 0 2px 8px rgba(13,27,75,0.07);
+}
+.edukasi-thumb {
+  width: 100%; height: 90px; object-fit: cover;
+}
+.edukasi-thumb-placeholder {
+  height: 90px; background: var(--gray);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+.edukasi-body { padding: 10px; }
+.edukasi-title {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  margin-top: 4px; line-height: 1.3;
+}
+.edukasi-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+.badge-kategori {
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 10px;
+}
+.badge-organik    { background: #e8f5e9; color: #2e7d32; }
+.badge-anorganik  { background: #e3f2fd; color: #1565c0; }
+.badge-b3         { background: #fce4ec; color: #c62828; }
+.badge-daur_ulang { background: #f3e5f5; color: #6a1b9a; }
+
+.pill {
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  background: var(--gray); color: var(--muted);
+  text-decoration: none; white-space: nowrap;
+}
+.pill-active { background: var(--navy); color: #fff; }
+
+.filter-pills { overflow-x: auto; padding-bottom: 4px; }
+
+/* ── Artikel / Video ── */
+.artikel-konten {
+  font-size: 14px; line-height: 1.7; color: var(--text);
+  margin-bottom: 20px;
+}
+.video-wrapper {
+  position: relative; padding-top: 56.25%;
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 16px;
+}
+.video-frame {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ── Kuis Banner ── */
+.kuis-banner {
+  background: var(--gray); border-radius: 14px;
+  padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+  margin-top: 16px;
+}
+.kuis-banner-icon { font-size: 24px; }
+.kuis-banner h4 { font-size: 14px; font-weight: 700; color: var(--navy); }
+.kuis-banner p  { font-size: 12px; color: var(--muted); }
+
+/* ── Kuis Soal ── */
+.soal-nomor { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
+.soal-pertanyaan { font-size: 14px; font-weight: 600; color: var(--text); margin: 6px 0 12px; }
+.pilihan-list { display: flex; flex-direction: column; gap: 8px; }
+.pilihan-item {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--gray); border-radius: 10px; padding: 10px 12px;
+  cursor: pointer;
+}
+.pilihan-item input[type=radio] { width: 16px; height: 16px; accent-color: var(--navy); }
+.pilihan-key {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: var(--navy); color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.pilihan-text { font-size: 13px; color: var(--text); }
+
+/* ── Laporan ── */
+.score-card {
+  background: var(--navy); border-radius: 16px;
+  padding: 20px; color: #fff; text-align: center;
+}
+.score-rw { font-size: 13px; opacity: 0.7; }
+.score-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px; font-weight: 700; color: var(--yellow);
+  line-height: 1;
+}
+.score-max { font-size: 20px; color: rgba(255,255,255,0.5); }
+.score-bar-bg {
+  height: 6px; background: rgba(255,255,255,0.2);
+  border-radius: 3px; margin-top: 12px;
+}
+.score-bar-fill { height: 100%; background: var(--yellow); border-radius: 3px; }
+
+.leaderboard-item { display: flex; align-items: center; gap: 12px; }
+.rank-badge {
+  width: 32px; height: 32px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.rank-1 { background: #FFD700; color: #7a5800; }
+.rank-2 { background: #C0C0C0; color: #444; }
+.rank-3 { background: #CD7F32; color: #fff; }
+.rank-other { background: var(--gray); color: var(--muted); }
+
+/* ── Profil ── */
+.profil-avatar {
+  width: 80px; height: 80px; border-radius: 24px;
+  border: 3px solid rgba(255,255,255,0.3);
+  overflow: hidden; margin: 0 auto 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.2);
+}
+.avatar-img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-initials {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 700; color: #fff;
+}
+
+/* ── Notifikasi ── */
+.notif-item {
+  display: flex; align-items: flex-start; gap: 12px; position: relative;
+}
+.notif-unread { border-left: 3px solid var(--yellow); }
+.notif-read   { border-left: 3px solid transparent; opacity: 0.75; }
+.notif-icon { font-size: 20px; flex-shrink: 0; }
+.notif-title { font-weight: 700; font-size: 14px; color: var(--navy); }
+.notif-pesan { font-size: 13px; color: var(--text); margin-top: 2px; }
+.notif-waktu { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.notif-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--yellow); flex-shrink: 0; margin-top: 4px;
+}

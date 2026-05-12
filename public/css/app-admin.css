@@ -1,0 +1,335 @@
+/* ──────────────────────────────────────
+   TARUNADAYAVARNA — Admin CSS
+   ────────────────────────────────────── */
+
+:root {
+  --navy:   #0D1B4B;
+  --yellow: #F5C518;
+  --white:  #FFFFFF;
+  --gray:   #F4F6FB;
+  --muted:  #8892a4;
+  --text:   #1a1a2e;
+  --green:  #2ECC71;
+  --sidebar-w: 240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.admin-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #f0f2f8;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Layout ── */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.admin-sidebar {
+  width: var(--sidebar-w);
+  min-width: var(--sidebar-w);
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  z-index: 100;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.logo-badge {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--navy); flex-shrink: 0;
+}
+.logo-title {
+  font-weight: 700; font-size: 13px; color: #fff;
+  white-space: nowrap; overflow: hidden;
+}
+.logo-sub { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 10px;
+  overflow-y: auto;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  margin-bottom: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-link.active { background: var(--yellow); color: var(--navy); font-weight: 700; }
+.nav-icon { font-size: 16px; width: 24px; text-align: center; }
+
+.sidebar-user {
+  display: flex; align-items: center; gap: 10px;
+  padding: 16px 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.user-avatar {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--navy); flex-shrink: 0;
+}
+.user-name  { font-size: 12px; font-weight: 700; color: #fff; }
+.user-role  { font-size: 10px; color: rgba(255,255,255,0.45); }
+.btn-logout {
+  background: rgba(255,255,255,0.1); border: none;
+  color: rgba(255,255,255,0.6);
+  width: 32px; height: 32px; border-radius: 8px;
+  font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  margin-left: auto;
+}
+
+/* ── Main ── */
+.admin-main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-topbar {
+  background: #fff;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eaecf0;
+  position: sticky; top: 0; z-index: 50;
+}
+.page-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 700; color: var(--navy);
+}
+.topbar-actions { display: flex; gap: 8px; }
+
+.admin-content { padding: 24px 28px; }
+
+/* ── Alert ── */
+.alert {
+  padding: 12px 16px; border-radius: 10px;
+  font-size: 13px; font-weight: 600;
+  margin: 0 28px 16px;
+}
+.alert-success { background: #D4F5E6; color: #1a7a44; }
+.alert-error   { background: #FDECEA; color: #c0392b; }
+
+/* ── Stat Widgets ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.stat-widget {
+  background: #fff; border-radius: 14px;
+  padding: 18px; display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 1px 4px rgba(13,27,75,0.06);
+}
+.stat-widget-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.stat-widget-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 700; color: var(--navy);
+  line-height: 1;
+}
+.stat-widget-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── Admin Grid ── */
+.admin-grid-2 {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media (max-width: 900px) { .admin-grid-2 { grid-template-columns: 1fr; } }
+
+/* ── Admin Card ── */
+.admin-card {
+  background: #fff; border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(13,27,75,0.06);
+  margin-bottom: 20px;
+}
+.admin-card-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+.admin-card-header h3 {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+}
+
+.table-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray);
+}
+.table-row:last-child { border-bottom: none; }
+
+.progress-bar-bg {
+  height: 6px; background: var(--gray); border-radius: 3px;
+}
+.progress-bar-fill { height: 100%; background: var(--yellow); border-radius: 3px; }
+
+/* ── Table ── */
+.admin-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+.admin-table th {
+  text-align: left; padding: 10px 12px;
+  background: var(--gray); color: var(--muted);
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.admin-table th:first-child { border-radius: 8px 0 0 8px; }
+.admin-table th:last-child  { border-radius: 0 8px 8px 0; }
+.admin-table td {
+  padding: 12px; border-bottom: 1px solid var(--gray);
+  vertical-align: middle;
+}
+.admin-table tr:last-child td { border-bottom: none; }
+.admin-table tr:hover td { background: #fafbff; }
+
+/* ── Badges ── */
+.badge {
+  font-size: 10px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px;
+  white-space: nowrap;
+}
+.badge-menunggu { background: #F0F0F0; color: #888; }
+.badge-proses   { background: #FFF3CC; color: #a07000; }
+.badge-selesai  { background: #D4F5E6; color: #1a7a44; }
+.badge-batal    { background: #FDECEA; color: #c0392b; }
+
+.badge-role { padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.badge-role-super_admin { background: #e8f0fe; color: #3d5afe; }
+.badge-role-admin_rw    { background: #fff3e0; color: #e65100; }
+.badge-role-petugas     { background: #f3e5f5; color: #6a1b9a; }
+.badge-role-warga       { background: #e8f5e9; color: #2e7d32; }
+
+.rank-badge {
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+}
+.rank-1 { background: #FFD700; color: #7a5800; }
+.rank-2 { background: #C0C0C0; color: #444; }
+.rank-3 { background: #CD7F32; color: #fff; }
+.rank-other { background: var(--gray); color: var(--muted); }
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--navy); color: #fff;
+  padding: 9px 18px; border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center;
+}
+.btn-primary:hover { background: #162459; }
+
+.btn-secondary {
+  background: var(--gray); color: var(--navy);
+  padding: 9px 18px; border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center;
+}
+
+.btn-primary-sm {
+  background: var(--navy); color: #fff;
+  padding: 5px 12px; border-radius: 8px;
+  font-size: 12px; font-weight: 600;
+  text-decoration: none;
+}
+.btn-secondary-sm {
+  background: var(--gray); color: var(--navy);
+  padding: 5px 12px; border-radius: 8px;
+  font-size: 12px; font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-table-edit {
+  background: #e8f0fe; color: #1a56db;
+  padding: 4px 10px; border-radius: 7px;
+  font-size: 12px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-block;
+}
+.btn-table-delete {
+  background: #FDECEA; color: #c0392b;
+  padding: 4px 10px; border-radius: 7px;
+  font-size: 12px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-block;
+}
+
+/* ── Forms ── */
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--muted); margin-bottom: 6px;
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.form-control {
+  width: 100%; padding: 10px 14px;
+  border: 2px solid var(--gray); border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; color: var(--text);
+  outline: none; transition: border-color 0.2s;
+  background: #fff;
+}
+.form-control:focus { border-color: var(--yellow); }
+textarea.form-control { resize: vertical; }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.form-actions {
+  display: flex; gap: 10px; margin-top: 24px;
+}
+.field-error {
+  display: block; font-size: 11px; color: #e74c3c; margin-top: 4px;
+}
+
+/* ── Kuis Create ── */
+.soal-block {
+  background: var(--gray); border-radius: 12px;
+  padding: 16px; margin-bottom: 12px;
+}
+.soal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+  font-size: 13px; font-weight: 700; color: var(--navy);
+}
+.pilihan-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
