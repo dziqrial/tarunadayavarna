@@ -7,6 +7,7 @@ use App\Http\Controllers\App\JadwalController as AppJadwalController;
 use App\Http\Controllers\App\KuisController as AppKuisController;
 use App\Http\Controllers\App\LaporanController as AppLaporanController;
 use App\Http\Controllers\App\NotifikasiController as AppNotifikasiController;
+use App\Http\Controllers\App\PengaturanController;
 use App\Http\Controllers\App\ProfilController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,7 +41,9 @@ Route::prefix('app')->name('app.')->group(function () {
         Route::put('/profil',         [ProfilController::class,        'update'])->name('profil.update');
         Route::get('/notifikasi',     [AppNotifikasiController::class, 'index'])->name('notifikasi');
         Route::post('/notifikasi/{id}/baca', [AppNotifikasiController::class, 'markRead'])->name('notifikasi.baca');
-        Route::post('/logout',        [AuthController::class,          'logout'])->name('logout');
+        Route::get('/pengaturan',            [PengaturanController::class,    'index'])->name('pengaturan');
+        Route::post('/pengaturan/password',  [PengaturanController::class,    'gantiPassword'])->name('pengaturan.password');
+        Route::post('/logout',               [AuthController::class,          'logout'])->name('logout');
 
         // Jadwal (read)
         Route::get('/jadwal', [AppJadwalController::class, 'index'])->name('jadwal');

@@ -39,7 +39,7 @@
 
   {{-- Menu Grid --}}
   <h3 class="section-title">Menu</h3>
-  <div class="menu-grid">
+  <div class="menu-grid" style="grid-template-columns: repeat(4, 1fr)">
     <a href="{{ route('app.jadwal') }}" class="menu-item">
       <div class="menu-icon">📅</div>
       <span>Jadwal</span>
@@ -56,6 +56,18 @@
       <div class="menu-icon">👤</div>
       <span>Profil</span>
     </a>
+  </div>
+  <div class="menu-grid" style="grid-template-columns: repeat(4, 1fr)">
+    <a href="{{ route('app.notifikasi') }}" class="menu-item">
+      <div class="menu-icon">🔔</div>
+      <span>Notifikasi</span>
+    </a>
+    <a href="{{ route('app.pengaturan') }}" class="menu-item">
+      <div class="menu-icon">⚙️</div>
+      <span>Pengaturan</span>
+    </a>
+    <div style="flex:1"></div>
+    <div style="flex:1"></div>
   </div>
 
   {{-- Jadwal Hari Ini --}}
