@@ -26,6 +26,11 @@ class JadwalController extends Controller
             $query->whereDate('tanggal', '>=', now()->subDays(7));
         }
 
+        // Filter jenis sampah
+        if ($request->filled('jenis')) {
+            $query->where('jenis_sampah', $request->jenis);
+        }
+
         // Petugas hanya lihat jadwal yang di-assign ke dia
         if ($user->isPetugas()) {
             $query->where('petugas_id', $user->id);

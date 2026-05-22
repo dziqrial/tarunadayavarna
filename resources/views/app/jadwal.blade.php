@@ -12,14 +12,31 @@
 <div class="page-content">
 
   {{-- Filter Tanggal --}}
-  <form method="GET" action="{{ route('app.jadwal') }}" style="margin-bottom:16px">
+  <form method="GET" action="{{ route('app.jadwal') }}" id="filter-form" style="margin-bottom:12px">
     <div class="input-row" style="padding-right:12px">
       <div class="input-icon">📅</div>
       <input type="date" name="tanggal" value="{{ request('tanggal') }}"
              style="flex:1;border:none;background:transparent;font-size:14px;outline:none"
              onchange="this.form.submit()">
     </div>
+    {{-- preserve jenis filter --}}
+    @if(request('jenis'))
+      <input type="hidden" name="jenis" value="{{ request('jenis') }}">
+    @endif
   </form>
+
+  {{-- Filter Jenis Sampah (pills) --}}
+  <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:14px">
+    @php
+      $jenisList = ['' => 'Semua', 'organik' => 'Organik', 'anorganik' => 'Anorganik', 'campuran' => 'Campuran', 'b3' => 'B3'];
+      $currentJenis = request('jenis', '');
+    @endphp
+    @foreach($jenisList as $val => $label)
+      <a href="{{ route('app.jadwal', array_merge(request()->query(), ['jenis' => $val])) }}"
+         class="pill {{ $currentJenis === $val ? 'pill-active' : '' }}"
+         style="white-space:nowrap;padding:6px 14px">{{ $label }}</a>
+    @endforeach
+  </div>
 
   @forelse($jadwals as $j)
     <div class="card" style="margin-bottom:10px">
