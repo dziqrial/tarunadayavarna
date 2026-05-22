@@ -51,9 +51,8 @@ body.admin-body {
   width: 40px; height: 40px; border-radius: 12px;
   background: var(--yellow);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px; font-weight: 700;
-  color: var(--navy); flex-shrink: 0;
+  flex-shrink: 0;
+  padding: 6px;
 }
 .logo-title {
   font-weight: 700; font-size: 13px; color: #fff;

@@ -15,7 +15,9 @@
     {{-- Sidebar --}}
     <aside class="admin-sidebar">
       <div class="sidebar-logo">
-        <div class="logo-badge">T</div>
+        <div class="logo-badge">
+          <img src="{{ asset('images/logo.svg') }}" alt="Logo" style="width:26px;height:26px;object-fit:contain;display:block">
+        </div>
         <div>
           <div class="logo-title">Tarunadayavarna</div>
           <div class="logo-sub">Panel Admin</div>

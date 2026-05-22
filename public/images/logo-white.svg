@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Top full crossbar -->
+  <polygon points="10,28 190,28 175,52 25,52"
+    fill="white"/>
+  <!-- Left outer wing -->
+  <polygon points="10,28 25,28 25,52 46,52 22,145 8,138"
+    fill="white"/>
+  <!-- Right outer wing (mirror) -->
+  <polygon points="190,28 175,28 175,52 154,52 178,145 192,138"
+    fill="white"/>
+  <!-- Inner left arm -->
+  <polygon points="64,52 84,52 100,162 84,145 70,92"
+    fill="white"/>
+  <!-- Inner right arm (mirror) -->
+  <polygon points="136,52 116,52 100,162 116,145 130,92"
+    fill="white"/>
+</svg>

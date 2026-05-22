@@ -123,11 +123,7 @@ html, body {
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 16px;
   box-shadow: 0 8px 24px rgba(245,197,24,0.4);
-}
-.logo-letter {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px; font-weight: 700;
-  color: var(--navy);
+  padding: 10px;
 }
 .app-title {
   font-family: 'Cormorant Garamond', serif;

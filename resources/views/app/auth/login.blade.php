@@ -7,7 +7,7 @@
 
   <div class="auth-header">
     <div class="logo-circle">
-      <span class="logo-letter">T</span>
+      <img src="{{ asset('images/logo.svg') }}" alt="Tarunadayavarna" style="width:44px;height:44px;object-fit:contain">
     </div>
     <h1 class="app-title">Tarunadayavarna</h1>
     <p class="app-subtitle">Sistem Pengelolaan Sampah Desa</p>
