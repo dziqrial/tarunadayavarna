@@ -4,17 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Jadwal;
+use App\Models\PengangkutanLog;
 use App\Models\Rw;
 use App\Models\User;
+use App\Services\LaporanService;
 use App\Services\NotifikasiService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class JadwalController extends Controller
 {
     public function index()
     {
         $user  = auth()->user();
-        $query = Jadwal::with(['rw', 'petugas']);
+        $query = Jadwal::with(['rw', 'petugas', 'pengangkutanLog']);
 
         if ($user->isAdminRw()) {
             $query->where('rw_id', $user->rw_id);
@@ -76,7 +79,52 @@ class JadwalController extends Controller
 
     public function show(Jadwal $jadwal)
     {
-        return redirect()->route('admin.jadwal.edit', $jadwal);
+        $user = auth()->user();
+        if ($user->isAdminRw() && $jadwal->rw_id !== $user->rw_id) abort(403);
+
+        $jadwal->load(['rw', 'petugas', 'pengangkutanLog']);
+
+        return view('admin.jadwal.show', compact('jadwal', 'user'));
+    }
+
+    public function inputLog(Request $request, Jadwal $jadwal)
+    {
+        $user = auth()->user();
+        if ($user->isAdminRw() && $jadwal->rw_id !== $user->rw_id) abort(403);
+
+        $request->validate([
+            'berat_actual_kg' => 'required|numeric|min:0',
+            'catatan'         => 'nullable|string|max:1000',
+            'foto_bukti'      => 'nullable|image|max:2048',
+        ]);
+
+        $path = null;
+        if ($request->hasFile('foto_bukti')) {
+            $path = $request->file('foto_bukti')->store('bukti', 'public');
+        }
+
+        PengangkutanLog::updateOrCreate(
+            ['jadwal_id' => $jadwal->id],
+            [
+                'berat_actual_kg' => $request->berat_actual_kg,
+                'foto_bukti_url'  => $path ? Storage::url($path) : ($jadwal->pengangkutanLog?->foto_bukti_url),
+                'catatan'         => $request->catatan,
+                'selesai_at'      => now(),
+                'created_at'      => now(),
+            ]
+        );
+
+        $jadwal->update(['status' => 'selesai']);
+
+        app(LaporanService::class)->updateBulanan(
+            $jadwal->rw_id,
+            $jadwal->tanggal->month,
+            $jadwal->tanggal->year
+        );
+
+        return redirect()
+            ->route('admin.jadwal.show', $jadwal->id)
+            ->with('success', 'Log pengangkutan berhasil disimpan dan jadwal ditandai selesai.');
     }
 
     public function edit(Jadwal $jadwal)

@@ -69,6 +69,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:super_admin,ad
 
     Route::resource('/users',     UserController::class);
     Route::resource('/jadwal',    AdminJadwalController::class);
+    Route::post('/jadwal/{jadwal}/log', [AdminJadwalController::class, 'inputLog'])->name('jadwal.inputLog');
     Route::resource('/edukasi',   AdminEdukasiController::class);
     Route::resource('/kuis',      AdminKuisController::class);
 
